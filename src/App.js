@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <div className={`App d-flex flex-column min-vh-100`}>
+      <div className={`App ${dark ? "bg-light" : "bg-dark"}`}>
       <Header dark={dark} updateDark={updateDark} />
 
       <Home dark={dark} updateDark={updateDark} />

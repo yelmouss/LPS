@@ -7,14 +7,23 @@ import logoBlank from "../../logoBlank.png";
 import logoDark from "../../LogoDark.png";
 import { BsFillSunFill, BsMoonStarsFill } from "react-icons/bs";
 
-import {TfiShoppingCartFull} from 'react-icons/tfi';
+import { TfiShoppingCartFull } from "react-icons/tfi";
 
 const Header = ({ dark, updateDark }) => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      bg={`${dark ? "light" : "dark"}`}
+      variant={`${dark ? "light" : "dark"}`}
+    >
       <Container>
         <Navbar.Brand href="#home">
-          <img src={logoBlank} width="100" height="50" alt="React logo" />
+          {dark ? (
+            <img src={logoDark} width="100" height="50" alt="React logo" />
+          ) : (
+            <img src={logoBlank} width="100" height="50" alt="React logo" />
+          )}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -34,7 +43,9 @@ const Header = ({ dark, updateDark }) => {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link> {dark ? (
+            <Nav.Link>
+              {" "}
+              {dark ? (
                 <BsFillSunFill
                   onClick={() =>
                     updateDark(!dark, localStorage.setItem("dark", !dark))
@@ -46,9 +57,10 @@ const Header = ({ dark, updateDark }) => {
                     updateDark(!dark, localStorage.setItem("dark", !dark))
                   }
                 />
-              )}</Nav.Link>
+              )}
+            </Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
-            <TfiShoppingCartFull  /> Panier
+              <TfiShoppingCartFull /> Panier
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
