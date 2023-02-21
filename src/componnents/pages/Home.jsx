@@ -20,7 +20,7 @@ const Home =  ({ dark, updateDark }) => {
             Bienvenue dans notre galerie digitale artistique
           </h1>
         </Font>
-        <Row xs="auto" lg={4} md={3} className="p-2">
+        <Row xs="auto" lg={4} md={3} className="p-2 d-flex justify-content-center">
           {ProjectsData.map((item, i) => (
             <Col className="mt-2">
               <Card className={`${dark ? "" : "text-dark"}`}>

@@ -68,6 +68,7 @@
 }
 
 .MyImgCard{
-  height: 18em;
+  height: 15em;
+  /* width: 500px; */
   object-fit: cover;
 }
