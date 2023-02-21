@@ -22,7 +22,7 @@ const Home =  ({ dark, updateDark }) => {
         </Font>
         <Row xs="auto" lg={4} md={3} className="p-2 d-flex justify-content-center">
           {ProjectsData.map((item, i) => (
-            <Col className="mt-2">
+            <Col className="mt-2" key={i}>
               <Card className={`${dark ? "" : "text-dark"}`}>
                 <Card.Img
                   className="MyImgCard"
@@ -37,11 +37,12 @@ const Home =  ({ dark, updateDark }) => {
                   <Card.Link href="#">
                     <TfiShoppingCartFull />
                   </Card.Link>
-                  <Card.Link href="#">
+                  <Card.Link>
                     <BsSuitHeart />
                   </Card.Link>
                   <Card.Link href="#">
                     <BsEye />
+                     {/* {`${i}`} */}
                   </Card.Link>
                 </Card.Body>
               </Card>
