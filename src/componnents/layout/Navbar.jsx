@@ -18,14 +18,14 @@ const Header = ({ dark, updateDark }) => {
       variant={`${dark ? "light" : "dark"}`}
     >
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           {dark ? (
             <img src={logoDark} width="100" height="50" alt="React logo" />
           ) : (
             <img src={logoBlank} width="100" height="50" alt="React logo" />
           )}
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav">Menu</Navbar.Toggle>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="#features">Features</Nav.Link>
