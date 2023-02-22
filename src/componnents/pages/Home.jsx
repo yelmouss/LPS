@@ -5,9 +5,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { ProjectsData } from "../../data/tableaux";
 import Font, { Text } from "react-font";
-import { BsFillSuitHeartFill, BsSuitHeart, BsEye } from "react-icons/bs";
+import { BsFillSuitHeartFill, BsSuitHeart, BsEye, BsCartPlus } from "react-icons/bs";
 import { TfiShoppingCartFull } from "react-icons/tfi";
+import { Link } from "react-router-dom";
 
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import { RiDeleteBinLine } from "react-icons/ri";
 const Home = ({ dark, updateDark }) => {
   const [likes, setLikes] = useState([]);
   const [cart, setCart] = useState([]);
@@ -46,12 +49,29 @@ const Home = ({ dark, updateDark }) => {
       );
       updateCart(newCart);
     } else {
-      const newCart = [...cart, { id: item.id, price: item.price, quantity: 1 }];
+      const newCart = [
+        ...cart,
+        { id: item.id, price: item.price, quantity: 1 },
+      ];
       updateCart(newCart);
     }
   };
 
-  
+  const handleRemoveFromCart = (item) => {
+    const existingItem = cart.find((cartItem) => cartItem.id === item.id);
+    if (existingItem.quantity > 1) {
+      const newCart = cart.map((cartItem) =>
+        cartItem.id === item.id
+          ? { ...cartItem, quantity: cartItem.quantity - 1 }
+          : cartItem
+      );
+      updateCart(newCart);
+    } else {
+      const newCart = cart.filter((cartItem) => cartItem.id !== item.id);
+      updateCart(newCart);
+    }
+  };
+
   return (
     <Container
       className={`d-flex flex-column min-vh-100 SVGGround ${
@@ -76,9 +96,9 @@ const Home = ({ dark, updateDark }) => {
               (cartItem) => cartItem.id === item.id
             );
             const itemQuantity = existingCartItem
-              ? existingCartItem.quantity
+              ? // ? existingCartItem.quantity + " Au panier"
+                existingCartItem.quantity
               : 0;
-
             return (
               <Col className="mt-3" key={i}>
                 <Card className={`${dark ? "" : "text-dark"}`}>
@@ -91,26 +111,49 @@ const Home = ({ dark, updateDark }) => {
                     <Card.Text>{item.description}</Card.Text>
                     <Card.Text>{item.price} $</Card.Text>
                   </Card.Body>
-                  <Card.Body className="fs-5 text-dark">
-                    <Card.Link
-                      className={itemQuantity ? "text-warning" : ""}
-                      onClick={() => handleAddToCart(item)}
-                    >
-                      <TfiShoppingCartFull />
-                      {itemQuantity ? (
-                        <span className="ms-2">{itemQuantity}</span>
-                      ) : null}
-                    </Card.Link>
-                    <Card.Link onClick={() => handleLike(i)}>
-                      {likes[i] ? (
-                        <BsFillSuitHeartFill color="red" />
-                      ) : (
-                        <BsSuitHeart />
-                      )}
-                    </Card.Link>
-                    <Card.Link href="#">
-                      <BsEye />
-                    </Card.Link>
+                  <Card.Body className="fs-5 text-dark p-2">
+                    <Row>
+                      <Col>
+                        {itemQuantity ? (
+                          <>
+                            <RiDeleteBinLine
+                              className="text-danger"
+                              onClick={() => handleRemoveFromCart(item)}
+                            />
+                          </>
+                        ) : (
+                          ""
+                        )}
+                        <Link
+                          className={itemQuantity ? "text-success fs-5" : ""}
+                          onClick={() => handleAddToCart(item)}
+                          style={{ textDecoration: "none" }}
+                        >
+                          {itemQuantity ? (
+                            <>
+                              {itemQuantity}<AiOutlinePlusCircle />
+                            </>
+                          ) : (
+                            <BsCartPlus />
+                          )}
+                        </Link>
+                      </Col>
+                      <Col>
+                        <Link onClick={() => handleLike(i)}>
+                          {likes[i] ? (
+                            <BsFillSuitHeartFill className="text-danger" />
+                          ) : (
+                            <BsSuitHeart />
+                          )}
+                        </Link>
+                        <Link
+                          to={"/offre/" + item.id}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <BsEye />
+                        </Link>
+                      </Col>
+                    </Row>
                   </Card.Body>
                 </Card>
               </Col>
