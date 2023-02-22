@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -10,12 +10,24 @@ import { TfiShoppingCartFull } from "react-icons/tfi";
 
 const Home = ({ dark, updateDark }) => {
   const [likes, setLikes] = useState([]);
+  const [cart, setCart] = useState([]);
 
-  // Récupère les informations sur les likes à partir du local storage lors du chargement du composant.
+  // Récupère les informations sur les likes et le panier à partir du local storage lors du chargement du composant.
   useEffect(() => {
     const likesFromStorage = JSON.parse(localStorage.getItem("likes")) || [];
     setLikes(likesFromStorage);
+    const cartFromStorage = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(cartFromStorage);
   }, []);
+
+  // Met à jour le panier et stocke les données dans le local storage.
+  const updateCart = useCallback(
+    (newCart) => {
+      setCart(newCart);
+      localStorage.setItem("cart", JSON.stringify(newCart));
+    },
+    [setCart]
+  );
 
   const handleLike = (index) => {
     const newLikes = [...likes];
@@ -24,35 +36,22 @@ const Home = ({ dark, updateDark }) => {
     localStorage.setItem("likes", JSON.stringify(newLikes));
   };
 
-  const [cart, setCart] = useState([]);
-
   const handleAddToCart = (item) => {
     const existingItem = cart.find((cartItem) => cartItem.id === item.id);
     if (existingItem) {
-      setCart((prevCart) =>
-        prevCart.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        )
+      const newCart = cart.map((cartItem) =>
+        cartItem.id === item.id
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
       );
+      updateCart(newCart);
     } else {
-      setCart((prevCart) => [
-        ...prevCart,
-        {
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          quantity: 1,
-        },
-      ]);
+      const newCart = [...cart, { id: item.id, price: item.price, quantity: 1 }];
+      updateCart(newCart);
     }
-    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
-
-
-
+  
   return (
     <Container
       className={`d-flex flex-column min-vh-100 SVGGround ${
@@ -72,47 +71,50 @@ const Home = ({ dark, updateDark }) => {
           md={3}
           className="p-2 d-flex justify-content-center"
         >
-              {ProjectsData.map((item, i) => {
-          const existingCartItem = cart.find(
-            (cartItem) => cartItem.id === item.id
-          );
-          const itemQuantity = existingCartItem ? existingCartItem.quantity : 0;
+          {ProjectsData.map((item, i) => {
+            const existingCartItem = cart.find(
+              (cartItem) => cartItem.id === item.id
+            );
+            const itemQuantity = existingCartItem
+              ? existingCartItem.quantity
+              : 0;
 
-          return (
-         
-            <Col className="mt-3" key={i}>
-              <Card className={`${dark ? "" : "text-dark"}`}>
-                <Card.Img
-                  className="MyImgCard"
-                  variant="top"
-                  src={item.image}
-                />
-                <Card.Body>
-                  <Card.Text>{item.description}</Card.Text>
-                  <Card.Text>{item.price} $</Card.Text>
-                </Card.Body>
-                <Card.Body className="fs-5 text-dark">
-                  <Card.Link
-                    className={itemQuantity ? "text-warning" : ""}
-                    onClick={() => handleAddToCart(item)}
-                  >
-                    <TfiShoppingCartFull />
-                    {itemQuantity ? <span className="ms-2">{itemQuantity}</span> : null}
-                  </Card.Link>
-                  <Card.Link onClick={() => handleLike(i)}>
-                    {likes[i] ? (
-                      <BsFillSuitHeartFill color="red" />
-                    ) : (
-                      <BsSuitHeart />
-                    )}
-                  </Card.Link>
-                  <Card.Link href="#">
-                    <BsEye />
-                  </Card.Link>
-                </Card.Body>
-              </Card>
-            </Col>
-           );
+            return (
+              <Col className="mt-3" key={i}>
+                <Card className={`${dark ? "" : "text-dark"}`}>
+                  <Card.Img
+                    className="MyImgCard"
+                    variant="top"
+                    src={item.image}
+                  />
+                  <Card.Body>
+                    <Card.Text>{item.description}</Card.Text>
+                    <Card.Text>{item.price} $</Card.Text>
+                  </Card.Body>
+                  <Card.Body className="fs-5 text-dark">
+                    <Card.Link
+                      className={itemQuantity ? "text-warning" : ""}
+                      onClick={() => handleAddToCart(item)}
+                    >
+                      <TfiShoppingCartFull />
+                      {itemQuantity ? (
+                        <span className="ms-2">{itemQuantity}</span>
+                      ) : null}
+                    </Card.Link>
+                    <Card.Link onClick={() => handleLike(i)}>
+                      {likes[i] ? (
+                        <BsFillSuitHeartFill color="red" />
+                      ) : (
+                        <BsSuitHeart />
+                      )}
+                    </Card.Link>
+                    <Card.Link href="#">
+                      <BsEye />
+                    </Card.Link>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
           })}
         </Row>
       </Container>
