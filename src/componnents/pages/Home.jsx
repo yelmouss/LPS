@@ -4,11 +4,17 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { ProjectsData } from "../../data/tableaux";
-import Font, { Text } from "react-font";
-import { BsFillSuitHeartFill, BsSuitHeart, BsEye, BsCartPlus } from "react-icons/bs";
-import { TfiShoppingCartFull } from "react-icons/tfi";
+// import Font, { Text } from "react-font";
+import Font from "react-font";
+import {
+  BsFillSuitHeartFill,
+  BsSuitHeart,
+  BsEye,
+  BsCartPlus,
+  BsCurrencyEuro,
+} from "react-icons/bs";
+// import { TfiShoppingCartFull } from "react-icons/tfi";
 import { Link } from "react-router-dom";
-
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
 const Home = ({ dark, updateDark }) => {
@@ -109,7 +115,10 @@ const Home = ({ dark, updateDark }) => {
                   />
                   <Card.Body>
                     <Card.Text>{item.description}</Card.Text>
-                    <Card.Text>{item.price} $</Card.Text>
+                    <Card.Text>
+                      {item.price}
+                      <BsCurrencyEuro />
+                    </Card.Text>
                   </Card.Body>
                   <Card.Body className="fs-5 text-dark p-2">
                     <Row>
@@ -117,7 +126,7 @@ const Home = ({ dark, updateDark }) => {
                         {itemQuantity ? (
                           <>
                             <RiDeleteBinLine
-                              className="text-danger"
+                              className="text-danger m-1"
                               onClick={() => handleRemoveFromCart(item)}
                             />
                           </>
@@ -125,13 +134,14 @@ const Home = ({ dark, updateDark }) => {
                           ""
                         )}
                         <Link
-                          className={itemQuantity ? "text-success fs-5" : ""}
+                          className={itemQuantity ? "text-success fs-5  m-1" : ""}
                           onClick={() => handleAddToCart(item)}
                           style={{ textDecoration: "none" }}
                         >
                           {itemQuantity ? (
                             <>
-                              {itemQuantity}<AiOutlinePlusCircle />
+                              {itemQuantity}
+                              <AiOutlinePlusCircle />
                             </>
                           ) : (
                             <BsCartPlus />

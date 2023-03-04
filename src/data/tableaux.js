@@ -5,7 +5,7 @@ export const ProjectsData = [
     title: "Lorem Ipsum",
     description: `tableau decoratif design massinart`,
     image: "https://cdn.shopify.com/s/files/1/0068/0283/3463/files/tableau-decoratif-design-massinart_350x.jpg?v=1644578629",
-    price: 10,
+    price: 15,
   },
   {
     id: 2,

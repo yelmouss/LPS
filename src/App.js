@@ -7,7 +7,8 @@ import Home from "./componnents/pages/Home";
 import { Button } from "react-bootstrap";
 import { FaBeer } from "react-icons/fa";
 import { React, useEffect, useState } from "react";
-
+import Product from "./componnents/pages/product";
+import Cart from "./componnents/pages/cart";
 
 function App() {
 
