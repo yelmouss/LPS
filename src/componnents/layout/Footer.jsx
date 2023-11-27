@@ -1,15 +1,15 @@
 import React from "react";
 
-import { BiMessageAltDetail } from "react-icons/bi";
+import { BiLogoWhatsapp } from "react-icons/bi";
 
 
 function Footer({ dark, updateDark }) {
   return (
     <>
-      <footer className={`footer mt-auto py-3 ${dark ? "bg-light" : "bg-dark"}`}>
+      <footer className={`footer py-3 sticky-bottom ${dark ? "bg-light" : "bg-dark"} bg-opacity-75`} >
         <div className="container">
           <span className="text-muted">
-            Powered by Geeks - {new Date().getFullYear()} Copyright ©{" "}
+            Powered by yelmouss - {new Date().getFullYear()} Copyright ©{" "}
           </span>
         </div>
       </footer>
@@ -18,7 +18,7 @@ function Footer({ dark, updateDark }) {
         href="https://wa.me/212612865681?text=Hi%20yelmouss"
         className="floating"
         target="_blank" rel="noreferrer"
-      > <BiMessageAltDetail className="my-float" /> </a>
+      > <BiLogoWhatsapp  className="my-float" /> </a>
     </>
   );
 }

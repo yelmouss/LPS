@@ -16,13 +16,14 @@ const Header = ({ dark, updateDark }) => {
       expand="lg"
       bg={`${dark ? "light" : "dark"}`}
       variant={`${dark ? "light" : "dark"}`}
+      sticky="top"
     >
       <Container>
         <Navbar.Brand href="/">
           {dark ? (
-            <img src={logoDark} width="100" height="50" alt="React logo" />
+            <img src={logoDark} width="80" height="50" alt="React logo" />
           ) : (
-            <img src={logoBlank} width="100" height="50" alt="React logo" />
+            <img src={logoBlank} width="80" height="50" alt="React logo" />
           )}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav">Menu</Navbar.Toggle>

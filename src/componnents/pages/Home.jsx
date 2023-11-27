@@ -12,11 +12,15 @@ import {
   BsEye,
   BsCartPlus,
   BsCurrencyEuro,
+  
 } from "react-icons/bs";
+import { CiCircleMinus } from "react-icons/ci";
+
 // import { TfiShoppingCartFull } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { GiVanillaFlower } from "react-icons/gi";
 const Home = ({ dark, updateDark }) => {
   const [likes, setLikes] = useState([]);
   const [cart, setCart] = useState([]);
@@ -81,14 +85,14 @@ const Home = ({ dark, updateDark }) => {
   return (
     <Container
       className={`d-flex flex-column min-vh-100 SVGGround ${
-        dark ? "bg-light text-dark" : "bg-dark text-light"
+        dark ? "bg-light text-success" : "bg-dark text-success"
       }`}
       fluid
     >
       <Container className="mt-2 p-2">
-        <Font family="Zeyada">
-          <h1 className="fw-bolder  p-2 fs-1">
-            Bienvenue dans notre galerie digitale artistique
+        <Font family="Roboto">
+          <h1 className="fw-bolder  p-2 fs-1 fst-italic">
+            Bienvenue dans notre Marché digital BIO <GiVanillaFlower />
           </h1>
         </Font>
         <Row
@@ -114,7 +118,7 @@ const Home = ({ dark, updateDark }) => {
                     src={item.image}
                   />
                   <Card.Body>
-                    <Card.Text>{item.description}</Card.Text>
+                    <Card.Text>{item.title}</Card.Text>
                     <Card.Text>
                       {item.price}
                       <BsCurrencyEuro />
@@ -125,7 +129,7 @@ const Home = ({ dark, updateDark }) => {
                       <Col>
                         {itemQuantity ? (
                           <>
-                            <RiDeleteBinLine
+                            <CiCircleMinus 
                               className="text-danger m-1"
                               onClick={() => handleRemoveFromCart(item)}
                             />
@@ -148,7 +152,7 @@ const Home = ({ dark, updateDark }) => {
                           )}
                         </Link>
                       </Col>
-                      <Col>
+                      <Col className="d-flex justify-content-center gap-2">
                         <Link onClick={() => handleLike(i)}>
                           {likes[i] ? (
                             <BsFillSuitHeartFill className="text-danger" />
