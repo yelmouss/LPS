@@ -62,3 +62,35 @@
   filter: grayscale(50%);
 
 }
+
+.cardHome{
+  background-image: url('./panier.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.Slila{
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.lgouffa{
+  z-index: 1;
+}
+
+.t9edia{
+  margin-top : -122%;
+  width: 75%;
+  height: 200px;
+  z-index: 0;
+  object-fit: cover;
+  border-radius: 154px 166px 100px 50px / 121px 170px 50px 25px;
+  /* mix-blend-mode: luminosity; */
+}
+
+.ManageCart {
+  position: relative; /* You can use 'absolute', 'fixed', or 'relative' depending on your layout needs */
+  z-index: 9999999999;
+}

@@ -22,6 +22,7 @@ import { Link } from "react-router-dom";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { GiVanillaFlower } from "react-icons/gi";
+import Slila from "./Slila";
 const Home = ({ dark, updateDark }) => {
   const [likes, setLikes] = useState([]);
   const [cart, setCart] = useState([]);
@@ -118,91 +119,66 @@ const Home = ({ dark, updateDark }) => {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-      <Container
-        className={`d-flex flex-column min-vh-100 SVGGround ${dark ? "bg-light text-success" : "bg-dark text-success"}`}
-        fluid
-      >
+    <Container className={`d-flex flex-column min-vh-100 SVGGround ${dark ? "bg-light text-success" : "bg-dark text-success"}`} fluid>
         <Container className="mt-2 p-2 m-0" fluid>
           <Font family="Roboto">
-            <h1 className="fw-bolder  p-2 fs-1 fst-italic">
+            <h1 className="fw-bolder  p-2 fs-1 fst-italic bg-light bg-opacity-75 rounded">
               Bienvenue dans notre Marché digital BIO <GiVanillaFlower />
             </h1>
           </Font>
-
-
-          <Row
-            xs={1}
-            lg={4}
-            md={3}
-            className="p-2 d-flex justify-content-center"
-          >
+          <Row xs={1} lg={5} md={3} className="p-2 d-flex justify-content-center">
             {ProjectsData.map((item, i) => {
-              const existingCartItem = cart.find(
-                (cartItem) => cartItem.id === item.id
+              const existingCartItem = cart.find((cartItem) => cartItem.id === item.id);
+
+              // Updated ManageCart function
+              const ManageCart = () => (
+                <Row className="ManageCart bg-light fs-4 d-flex flex-row bg-opacity-75 rounded" lg={1} xs={1} md={1}>
+                 <Col className="p-2">
+                 {itemQuantity ? (
+                      <>
+                        <CiCircleMinus
+                          className="text-danger"
+                          onClick={() => handleRemoveFromCart(item)}
+                        />
+                      </>
+                    ) : (
+                      ""
+                    )}
+                    <Link
+                      className={itemQuantity ? "text-success  " : ""}
+                      onClick={() => handleAddToCart(item)}
+                      style={{ textDecoration: "none" }}
+                    >
+                      {itemQuantity ? (
+                        <>
+                        <span> {itemQuantity} </span>
+                         
+                          <AiOutlinePlusCircle />
+                        </>
+                      ) : (
+                        <BsCartPlus />
+                      )}
+                    </Link>
+                
+                    <Link onClick={() => handleLike(i)}>
+                      {likes[i] ? (
+                        <BsFillSuitHeartFill className="text-danger" />
+                      ) : (
+                        <BsSuitHeart />
+                      )}
+                    </Link>
+                    <Link to={"/offre/" + item.id} style={{ textDecoration: "none" }}>
+                      <BsEye />
+                    </Link>
+                  </Col>
+                </Row>
               );
-              const itemQuantity = existingCartItem
-                ? // ? existingCartItem.quantity + " Au panier"
-                existingCartItem.quantity
-                : 0;
+
+              const itemQuantity = existingCartItem ? existingCartItem.quantity : 0;
+
               return (
-                <Col className="mt-3" key={i}>
-                  <Card className={`${dark ? "" : "text-dark"}`}>
-                    <Card.Img
-                      className="MyImgCard"
-                      variant="top"
-                      src={item.image} />
-                    <Card.Body>
-                      <Card.Text>{item.title}</Card.Text>
-                      <Card.Text>
-                        {item.price}
-                        <BsCurrencyEuro />
-                      </Card.Text>
-                    </Card.Body>
-                    <Card.Body className="fs-5 text-dark p-2">
-                      <Row>
-                        <Col>
-                          {itemQuantity ? (
-                            <>
-                              <CiCircleMinus
-                                className="text-danger m-1"
-                                onClick={() => handleRemoveFromCart(item)} />
-                            </>
-                          ) : (
-                            ""
-                          )}
-                          <Link
-                            className={itemQuantity ? "text-success fs-5  m-1" : ""}
-                            onClick={() => handleAddToCart(item)}
-                            style={{ textDecoration: "none" }}
-                          >
-                            {itemQuantity ? (
-                              <>
-                                {itemQuantity}
-                                <AiOutlinePlusCircle />
-                              </>
-                            ) : (
-                              <BsCartPlus />
-                            )}
-                          </Link>
-                        </Col>
-                        <Col className="d-flex justify-content-center gap-2">
-                          <Link onClick={() => handleLike(i)}>
-                            {likes[i] ? (
-                              <BsFillSuitHeartFill className="text-danger" />
-                            ) : (
-                              <BsSuitHeart />
-                            )}
-                          </Link>
-                          <Link
-                            to={"/offre/" + item.id}
-                            style={{ textDecoration: "none" }}
-                          >
-                            <BsEye />
-                          </Link>
-                        </Col>
-                      </Row>
-                    </Card.Body>
-                  </Card>
+                <Col className="mt-3 p-2" key={i}>                
+                  <Slila t9edia={item.image} comande={<ManageCart />} />
                 </Col>
               );
             })}
