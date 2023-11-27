@@ -54,3 +54,11 @@
   width:  15em;
   object-fit: cover;
 }
+
+.sliderimg{
+  height: 20em;
+  object-fit: cover;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+
+}
