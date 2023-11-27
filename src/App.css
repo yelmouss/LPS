@@ -51,5 +51,6 @@
 .MyImgCard {
   height: 15em;
   /* width: 500px; */
+  width:  15em;
   object-fit: cover;
 }

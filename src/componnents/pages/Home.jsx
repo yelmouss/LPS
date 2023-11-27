@@ -96,7 +96,7 @@ const Home = ({ dark, updateDark }) => {
           </h1>
         </Font>
         <Row
-          xs="auto"
+          xs={1}
           lg={4}
           md={3}
           className="p-2 d-flex justify-content-center"
