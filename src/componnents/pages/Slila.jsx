@@ -20,7 +20,7 @@ function Slila(props) {
         flipDirection="vertical"
         ref={ref}
         className="custom-flippy mt-5 bg-light rounded bg-opacity-50"
-        style={{ width: '100%', height: '700px' }}
+        style={{ width: '100%', height: '600px' }}
       >
         <FrontSide>
           {props.details}
@@ -28,7 +28,7 @@ function Slila(props) {
           <br />
           <hr />
           <div className='Slila'>
-            <img src={LaSlilafrom} alt="" className='img-fluid lgouffa' />
+            <img src={LaSlilafrom} alt="" className=' lgouffa' />
             <img src={props.t9edia} alt="" className='img t9edia' />
           </div>
           <br />

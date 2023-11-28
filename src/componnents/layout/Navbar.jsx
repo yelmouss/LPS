@@ -24,12 +24,14 @@ const Header = ({ dark, updateDark }) => {
           <Nav className="me-auto">
             <h2 className="text-center fs-5  text-light">Bienvenue Chez Panier Express</h2>
           </Nav>
+          <Navbar.Collapse>
           <Nav>
             <Nav.Link href="#features" className="text-light">Suivi de commande</Nav.Link>
             <Nav.Link href="#features" className="text-light">Ma liste d'envies.</Nav.Link>
             <Nav.Link href="#features" className="text-light">récemment consultés</Nav.Link>
 
           </Nav>
+          </Navbar.Collapse>
 
         </Container>
 
