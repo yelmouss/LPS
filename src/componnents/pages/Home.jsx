@@ -48,6 +48,7 @@ const Home = ({ dark, updateDark }) => {
   };
 
   const handleAddToCart = (item) => {
+  
     const existingItem = cart.find((cartItem) => cartItem.id === item.id);
     if (existingItem) {
       const newCart = cart.map((cartItem) =>
@@ -63,6 +64,8 @@ const Home = ({ dark, updateDark }) => {
       ];
       updateCart(newCart);
     }
+
+
   };
 
   const handleRemoveFromCart = (item) => {

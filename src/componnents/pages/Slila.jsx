@@ -20,9 +20,10 @@ function Slila(props) {
   return (
     <>
       <Flippy
-        flipOnHover={true}
-        flipOnClick={false}
-        flipDirection="horizontal"
+        flipOnHover={false}
+        // flipOnClick={false}
+        // isFlipped={undefined}
+        flipDirection="vertical"
         ref={ref}
         className="custom-flippy mt-5 bg-dark rounded bg-opacity-50"
         onMouseEnter={handleMouseEnter}
