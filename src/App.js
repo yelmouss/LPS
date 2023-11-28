@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-      <div className={`App ${dark ? "bg-light" : "bg-dark"}`}>
+      <div className={`App ${dark ? "bg-dark" : "bg-light"}`}>
       <Header dark={dark} updateDark={updateDark} />
 
       <Home dark={dark} updateDark={updateDark} />

@@ -51,46 +51,51 @@
 .MyImgCard {
   height: 15em;
   /* width: 500px; */
-  width:  15em;
+  width: 15em;
   object-fit: cover;
 }
 
-.sliderimg{
-  height: 20em;
+.sliderimg {
+  height: 15em;
   object-fit: cover;
-  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  -webkit-filter: grayscale(50%);
+  /* Safari 6.0 - 9.0 */
   filter: grayscale(50%);
 
 }
 
-.cardHome{
-  background-image: url('./panier.jpg');
-  background-size: cover;
-  background-position: center;
-}
 
-.Slila{
+.Slila {
   display: flex;
   flex-direction: column;
   gap: 25px;
   align-items: center;
 }
 
-.lgouffa{
+.lgouffa {
   z-index: 1;
+  object-fit: contain;
 }
 
-.t9edia{
-  margin-top : -122%;
-  width: 75%;
+.t9edia {
+  margin-top: -115%;
+  width: 100%;
   height: 200px;
   z-index: 0;
-  object-fit: cover;
-  border-radius: 154px 166px 100px 50px / 121px 170px 50px 25px;
+  object-fit: scale-down;
+  /* border-radius: 154px 166px 100px 50px / 121px 170px 50px 25px; */
   /* mix-blend-mode: luminosity; */
+  border-radius: 200px 194px 200px 200px;
+-webkit-border-radius: 200px 194px 200px 200px;
+-moz-border-radius: 200px 194px 200px 200px;
 }
 
 .ManageCart {
-  position: relative; /* You can use 'absolute', 'fixed', or 'relative' depending on your layout needs */
+  position: relative;
+  /* You can use 'absolute', 'fixed', or 'relative' depending on your layout needs */
   z-index: 9999999999;
+}
+
+.custom-flippy {
+  box-shadow: none ;
 }

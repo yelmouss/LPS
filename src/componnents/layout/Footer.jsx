@@ -6,7 +6,7 @@ import { BiLogoWhatsapp } from "react-icons/bi";
 function Footer({ dark, updateDark }) {
   return (
     <>
-      <footer className={`footer py-3 sticky-bottom ${dark ? "bg-light" : "bg-dark"} bg-opacity-75`} >
+      <footer className={`footer py-3 sticky-bottom ${dark ? "bg-dark" : "bg-light"} bg-opacity-75`} >
         <div className="container">
           <span className="text-muted">
             Powered by yelmouss - {new Date().getFullYear()} Copyright ©{" "}
