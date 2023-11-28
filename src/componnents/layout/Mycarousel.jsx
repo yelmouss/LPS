@@ -17,7 +17,7 @@ function Mycarousel() {
             <Carousel.Item>
                 <img
                     className="d-block w-100 sliderimg"
-                    src="./fondation.jpg"
+                    src="https://www.infomaroc.net/wp-content/uploads/2022/03/agroalimentaires-.jpg"
                     alt="Second slide" />
                 <Carousel.Caption className="bg-dark bg-opacity-50">
                     <h5>Produits Alimentaires</h5>
