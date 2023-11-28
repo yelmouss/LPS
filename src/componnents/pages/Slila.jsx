@@ -25,8 +25,8 @@ function Slila(props) {
         // isFlipped={false}
         flipDirection="vertical"
         ref={ref}
-        className="custom-flippy mt-5 bg-dark rounded bg-opacity-50"
-        style={{ width:'250px', height: '100%' }}
+        className="custom-flippy mt-5 bg-light rounded bg-opacity-50"
+        style={{ width:'100%', height: '700px' }}
       >
         <FrontSide>
           {props.details}

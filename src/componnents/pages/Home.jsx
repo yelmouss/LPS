@@ -147,19 +147,19 @@ const Home = ({ dark, updateDark }) => {
   return (
     <>
       <Mycarousel />
-      <Container className={`d-flex flex-column min-vh-100 SVGGround ${dark ? "bg-dark text-success" : "bg-light text-success"}`} fluid>
-        <Container className="mt-2 p-2 m-0" fluid>
+      <Container className={`d-flex flex-column min-vh-100 SVGGround bg-dark  bg-opacity-50 ${dark ? "bg-dark text-success" : "bg-light text-success"}`} fluid>
+        <Container className="p-2 m-0 " fluid>
           <Font family="Roboto">
-            <h1 className="fw-bolder p-2 fs-1 fst-italic bg-light bg-opacity-75 rounded">
+            <h1 className="fw-bolder p-2 fs-1 fst-italic">
               Bienvenue dans notre Marché digital BIO <GiVanillaFlower />
             </h1>
           </Font>
-          <Row xs={1} lg={5} md={3} className="p-2 d-flex justify-content-center">
+          <Row xs={1} lg={5} md={3} className="p-2 d-flex justify-content-center align-items-center">
             {ProjectsData.map((item, i) => {
               const existingCartItem = cart.find((cartItem) => cartItem.id === item.id);
               const itemQuantity = existingCartItem ? existingCartItem.quantity : 0;
               return (
-                <Col className="mt-5 p-2" key={i}>
+                <Col className="p-2" key={i}>
                   <Slila
                     t9edia={item.image}
                     comande={<ManageCart item={item} itemQuantity={itemQuantity} price={item.title} />}

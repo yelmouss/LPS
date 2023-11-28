@@ -27,6 +27,27 @@ export const ProjectsData = [
     image: "http://miam-images.m.i.pic.centerblog.net/724dde3b.png",
     price: 10,
   },
+  {
+    id: 4,
+    title: "Pommes de terre",
+    description: "Tableau decoratif design massinart",
+    image: "http://miam-images.m.i.pic.centerblog.net/724dde3b.png",
+    price: 10,
+  },
+  {
+    id: 4,
+    title: "Pommes de terre",
+    description: "Tableau decoratif design massinart",
+    image: "http://miam-images.m.i.pic.centerblog.net/724dde3b.png",
+    price: 10,
+  },
+  {
+    id: 4,
+    title: "Pommes de terre",
+    description: "Tableau decoratif design massinart",
+    image: "http://miam-images.m.i.pic.centerblog.net/724dde3b.png",
+    price: 10,
+  },
 ];
 
 // Répéter les 4 objets pour atteindre un total de 50 objets
