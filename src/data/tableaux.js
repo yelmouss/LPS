@@ -18,7 +18,7 @@ export const ProjectsData = [
     title: "Tomates",
     description: "Tomates BIO",
     image: "https://top-fruits.fr/templates/yootheme/cache/tomate-47f5d2b6.png",
-    price: 10,
+    price: 8,
   },
   {
     id: 4,
@@ -32,7 +32,7 @@ export const ProjectsData = [
     title: "Pommes de terre",
     description: "Tableau decoratif design massinart",
     image: "http://miam-images.m.i.pic.centerblog.net/724dde3b.png",
-    price: 10,
+    price: 15,
   },
   {
     id: 4,
